@@ -1,4 +1,4 @@
-package com.publicissapient;
+package com.publicissapient.inventoryservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
