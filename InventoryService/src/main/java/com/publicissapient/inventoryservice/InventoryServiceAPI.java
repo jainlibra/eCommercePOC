@@ -12,43 +12,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.publicissapient.inventoryservice.dto.Product;
-import com.publicissapient.inventoryservice.service.ProductService;
+import com.publicissapient.inventoryservice.service.IProductReadService;
+import com.publicissapient.inventoryservice.service.IProductWriteService;
+import com.publicissapient.inventoryservice.service.ProductWriteService;
 
 @RestController
 public class InventoryServiceAPI {
 	
 	@Autowired
-	ProductService productService;
+	IProductReadService productReadService;
+	
+	@Autowired
+	IProductWriteService productWriteService;
 	
 	@GetMapping("/inventory")
 	public List<Product> allProductInventory(){	
-		return productService.allProductInventory();		
+		return productReadService.allProductInventory();		
 	}
 	
 	@GetMapping("/inventory/{productId}")
 	public Product getInventoryProductById(@PathVariable String productId){	
-		return productService.getInventoryProductById(productId);		
+		return productReadService.getInventoryProductById(productId);		
 	}
 	
 	@GetMapping("/inventory/category/{category}")
 	public List<Product> getInventoryProductByCategory(@PathVariable String category){	
-		return productService.getInventoryProductByCategory(category);		
+		return productReadService.getInventoryProductByCategory(category);		
 	}
 	
 	@PostMapping("/inventory")
 	public void addProduct(@RequestBody Product product){
-		productService.addProduct(product);		
+		productWriteService.addProduct(product);		
 	}
 	
 	@PutMapping("/inventory")
 	public void updateProduct(@RequestBody Product product){
-		productService.updateProduct(product);
+		productWriteService.updateProduct(product);
 		
 	}
 	
 	@DeleteMapping("/inventory")
 	public void deleteProduct(@RequestBody Product product){
-		productService.deleteProduct(product);
+		productWriteService.deleteProduct(product);
 	}	
 	
 }

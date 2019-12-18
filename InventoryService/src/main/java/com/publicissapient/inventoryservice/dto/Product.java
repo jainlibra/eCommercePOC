@@ -3,7 +3,7 @@ package com.publicissapient.inventoryservice.dto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection="products")
 public class Product {
 	
 	@Id
@@ -13,6 +13,22 @@ public class Product {
 	String category;
 	String price;
 	long quantity;
+	
+	public Product() {
+		
+	}
+	
+	public Product(String productId, String productName, String productDescription, String category, String price,
+			long quantity) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.category = category;
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
 	
 	public String getProductId() {
 		return productId;
