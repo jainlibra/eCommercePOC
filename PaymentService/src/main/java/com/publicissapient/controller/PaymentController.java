@@ -1,5 +1,6 @@
 package com.publicissapient.controller;
 
+import com.publicissapient.Exception.CardDetailNotFound;
 import com.publicissapient.pojo.OrderPaymentInfo;
 import com.publicissapient.pojo.PaymentDetail;
 import com.publicissapient.service.PaymentService;
@@ -19,8 +20,7 @@ public class PaymentController {
     }
 
     @RequestMapping(value = "/paymentInfo/{orderId}" ,method = RequestMethod.POST)
-    PaymentDetail savePaymentDetail(@RequestBody PaymentDetail payment, @PathVariable String orderId)
-    {
+    PaymentDetail savePaymentDetail(@RequestBody PaymentDetail payment, @PathVariable String orderId) throws CardDetailNotFound {
        return paymentService.savePaymentDetail(orderId,payment );
 
     }

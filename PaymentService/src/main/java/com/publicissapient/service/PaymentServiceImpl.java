@@ -1,5 +1,6 @@
 package com.publicissapient.service;
 
+import com.publicissapient.Exception.CardDetailNotFound;
 import com.publicissapient.dao.PaymentDaoImpl;
 import com.publicissapient.pojo.OrderPaymentInfo;
 import com.publicissapient.pojo.PaymentDetail;
@@ -11,8 +12,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     PaymentDaoImpl paymentDao;
+
+    @Autowired
+    CardService cardService;
     @Override
-    public PaymentDetail savePaymentDetail(String orderId, PaymentDetail payment) {
+    public PaymentDetail savePaymentDetail(String orderId, PaymentDetail payment) throws CardDetailNotFound {
+        cardService.getCardDetail(payment.getUserId(),payment.getCardNo());
         return paymentDao.savePaymentDetail(orderId,payment);
     }
 
