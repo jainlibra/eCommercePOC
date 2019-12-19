@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.smartcardio.CardNotPresentException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Component
@@ -60,9 +61,9 @@ public class CardDaoImpl {
     }
 
     public CardDetail getCardDetail(String userId, String cardNo) throws CardDetailNotFound {
-        Stream<CardDetail> cardDetailStream = getCardDetailList(userId).getListCard().stream().filter(a -> a.getCardNo().equals(cardNo));
-        if(cardDetailStream.count()==0)
+        Optional<CardDetail> cardDetailStream = getCardDetailList(userId).getListCard().stream().filter(a -> a.getCardNo().equals(cardNo)).findFirst();
+        if(!cardDetailStream.isPresent())
             throw new CardDetailNotFound();
-        return cardDetailStream.findFirst().get();
+        return cardDetailStream.get();
     }
 }
