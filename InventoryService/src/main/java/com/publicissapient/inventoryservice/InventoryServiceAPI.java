@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.publicissapient.inventoryservice.dto.Product;
 import com.publicissapient.inventoryservice.service.IProductReadService;
 import com.publicissapient.inventoryservice.service.IProductWriteService;
-import com.publicissapient.inventoryservice.service.ProductWriteService;
 
-@RestController
+@RestController()
 public class InventoryServiceAPI {
 	
 	@Autowired

@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.publicissapient.inventoryservice.dto.Product;
 
-@Repository
+
+//@Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
 	
 	public List<Product> findByCategory(String category);
