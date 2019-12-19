@@ -4,25 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.publicissapient.inventoryservice.dto.Product;
-import com.publicissapient.inventoryservice.repository.ProductRepository;
+import com.publicissapient.inventoryservice.repository.ProductWriteRepository;
 
 @Service
 public class ProductWriteService implements IProductWriteService {
 	
 	@Autowired
-	ProductRepository productRepository;
+	ProductWriteRepository productWriteRepository;
 	
 	public void addProduct(Product product) {
-		productRepository.insert(product);
+		productWriteRepository.insert(product);
 	}
 	
 	public void updateProduct(Product product){
-		 productRepository.save(product);		
+		productWriteRepository.save(product);		
 	}
 	
 	
 	public void deleteProduct(Product product){
-		productRepository.delete(product);
+		productWriteRepository.delete(product);
 	}	
 
 }

@@ -13,7 +13,7 @@ import com.publicissapient.inventoryservice.dto.Product;
 public class DbSeeder implements CommandLineRunner {
 
 	@Autowired
-	ProductRepository productRepository;
+	ProductWriteRepository productWriteRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -27,10 +27,10 @@ public class DbSeeder implements CommandLineRunner {
 				20);
 		
 		//drop All Collections
-		this.productRepository.deleteAll();
+		this.productWriteRepository.deleteAll();
 		
 		List<Product> initialList = Arrays.asList(book1);
-		this.productRepository.saveAll(initialList);
+		this.productWriteRepository.saveAll(initialList);
 		
 	}
 	

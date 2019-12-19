@@ -5,24 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.publicissapient.inventoryservice.dto.Product;
-import com.publicissapient.inventoryservice.repository.ProductRepository;
+import com.publicissapient.inventoryservice.repository.ProductReadRepository;
 
 @Service
 public class ProductReadService implements IProductReadService {
 	
 	@Autowired
-	ProductRepository productRepository;
+	ProductReadRepository productReadRepository;
 	
 	public List<Product> allProductInventory(){	
-		return productRepository.findAll();		
+		return productReadRepository.findAll();		
 	}
 	
 	public Product getInventoryProductById(String productId){	
-		return productRepository.findById(productId).get();		
+		return productReadRepository.findById(productId).get();		
 	}
 	
 	public List<Product> getInventoryProductByCategory(String category){	
-		return productRepository.findByCategory(category);		
+		return productReadRepository.findByCategory(category);		
 	}
 
 }
