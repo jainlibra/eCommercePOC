@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/InventoryService/.mvn/.mvn.iml" filepath="$PROJECT_DIR$/InventoryService/.mvn/.mvn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PaymentService/.mvn/.mvn1.iml" filepath="$PROJECT_DIR$/PaymentService/.mvn/.mvn1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZuulAPIGateway/.mvn/.mvn2.iml" filepath="$PROJECT_DIR$/ZuulAPIGateway/.mvn/.mvn2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CatalogService/.mvn/.mvn3.iml" filepath="$PROJECT_DIR$/CatalogService/.mvn/.mvn3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CouchbaseSample/.mvn/.mvn4.iml" filepath="$PROJECT_DIR$/CouchbaseSample/.mvn/.mvn4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaDiscoveryService/.mvn/.mvn5.iml" filepath="$PROJECT_DIR$/EurekaDiscoveryService/.mvn/.mvn5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderService/.mvn/.mvn6.iml" filepath="$PROJECT_DIR$/OrderService/.mvn/.mvn6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZuulAPIGateway/src/main/main.iml" filepath="$PROJECT_DIR$/ZuulAPIGateway/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderWriteService/src/main/main1.iml" filepath="$PROJECT_DIR$/OrderWriteService/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PaymentService/src/main/main2.iml" filepath="$PROJECT_DIR$/PaymentService/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InventoryService/src/main/main3.iml" filepath="$PROJECT_DIR$/InventoryService/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaDiscoveryService/src/main/main4.iml" filepath="$PROJECT_DIR$/EurekaDiscoveryService/src/main/main4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderService/src/main/main5.iml" filepath="$PROJECT_DIR$/OrderService/src/main/main5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CouchbaseSample/src/main/main6.iml" filepath="$PROJECT_DIR$/CouchbaseSample/src/main/main6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CatalogService/src/main/main7.iml" filepath="$PROJECT_DIR$/CatalogService/src/main/main7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ZuulAPIGateway/src/test/test.iml" filepath="$PROJECT_DIR$/ZuulAPIGateway/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CouchbaseSample/src/test/test1.iml" filepath="$PROJECT_DIR$/CouchbaseSample/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaDiscoveryService/src/test/test2.iml" filepath="$PROJECT_DIR$/EurekaDiscoveryService/src/test/test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InventoryService/src/test/test3.iml" filepath="$PROJECT_DIR$/InventoryService/src/test/test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PaymentService/src/test/test4.iml" filepath="$PROJECT_DIR$/PaymentService/src/test/test4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CatalogService/src/test/test5.iml" filepath="$PROJECT_DIR$/CatalogService/src/test/test5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderWriteService/src/test/test6.iml" filepath="$PROJECT_DIR$/OrderWriteService/src/test/test6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderService/src/test/test7.iml" filepath="$PROJECT_DIR$/OrderService/src/test/test7.iml" />
+    </modules>
+  </component>
+</project>
