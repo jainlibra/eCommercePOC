@@ -12,4 +12,10 @@ public class RestExceptionHandler {
     {
         return new ResponseEntity<>("Card is already present.",HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(CardDetailNotFound.class)
+    protected ResponseEntity<Object> handleConflictCardNotFound()
+    {
+        return new ResponseEntity<>("Card details Does not exist.",HttpStatus.NOT_FOUND);
+    }
 }

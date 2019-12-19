@@ -1,5 +1,6 @@
 package com.publicissapient.service;
 
+import com.publicissapient.Exception.CardDetailNotFound;
 import com.publicissapient.Exception.CardDuplicationException;
 import com.publicissapient.dao.CardDaoImpl;
 import com.publicissapient.pojo.CardDetail;
@@ -19,12 +20,17 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardsInfo getCardDetail(String userId) {
-        return cardDao.getCardDetail(userId) ;
+    public CardsInfo getCardDetailList(String userId) throws CardDetailNotFound {
+        return cardDao.getCardDetailList(userId) ;
     }
 
     @Override
-    public String deleteCardDetail(String cardNo) {
-        return cardDao.deleteCardDetail(cardNo);
+    public String deleteCardDetail(String userId,String cardNo) throws CardDetailNotFound {
+        return cardDao.deleteCardDetail(userId,cardNo);
+    }
+
+    @Override
+    public CardDetail getCardDetail(String userId, String cardNo) throws CardDetailNotFound {
+        return cardDao.getCardDetail(userId,cardNo);
     }
 }

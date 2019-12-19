@@ -1,12 +1,16 @@
 package com.publicissapient.dao;
 
+import com.publicissapient.Exception.CardDetailNotFound;
 import com.publicissapient.Exception.CardDuplicationException;
 import com.publicissapient.pojo.CardDetail;
 import com.publicissapient.pojo.CardsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.smartcardio.CardNotPresentException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 public class CardDaoImpl {
@@ -38,13 +42,27 @@ public class CardDaoImpl {
 
     }
 
-    public String  deleteCardDetail(String cardNo) {
-        cardRepository.deleteById(cardNo);
+    public String  deleteCardDetail(String userId,String cardNo) throws CardDetailNotFound {
+        CardsInfo cardDetail = getCardDetailList(userId);
+        System.out.println(cardDetail.getListCard());
+        cardDetail.getListCard().removeIf(a->a.getCardNo().equals(cardNo));
+        System.out.println(cardDetail.getListCard());
+        cardRepository.save(cardDetail);
 
         return "SUCCESS";
     }
 
-    public CardsInfo getCardDetail(String userId) {
+    public CardsInfo getCardDetailList(String userId) throws CardDetailNotFound {
+        System.out.println(cardRepository.existsById(userId) +"  "+userId);
+        if(!cardRepository.existsById(userId))
+            throw new CardDetailNotFound();
         return cardRepository.findById(userId).get();
+    }
+
+    public CardDetail getCardDetail(String userId, String cardNo) throws CardDetailNotFound {
+        Stream<CardDetail> cardDetailStream = getCardDetailList(userId).getListCard().stream().filter(a -> a.getCardNo().equals(cardNo));
+        if(cardDetailStream.count()==0)
+            throw new CardDetailNotFound();
+        return cardDetailStream.findFirst().get();
     }
 }

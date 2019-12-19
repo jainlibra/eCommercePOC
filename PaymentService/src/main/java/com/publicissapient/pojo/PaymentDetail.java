@@ -3,6 +3,7 @@ package com.publicissapient.pojo;
 
 public class PaymentDetail {
     private String pID;
+    private String userId;
     private String cardNo;
     private String status;
 
@@ -28,5 +29,13 @@ public class PaymentDetail {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
