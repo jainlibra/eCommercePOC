@@ -7,11 +7,8 @@ import com.publicissapient.pojo.CardsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.smartcardio.CardNotPresentException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Component
 public class CardDaoImpl {
