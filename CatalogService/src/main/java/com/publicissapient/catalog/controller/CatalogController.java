@@ -1,4 +1,4 @@
-package com.publicissapient.catalog;
+package com.publicissapient.catalog.controller;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.publicissapient.catalog.dto.Product;
+import com.publicissapient.catalog.dto.ProductList;
 import com.publicissapient.catalog.service.CatalogService;
 
 @RestController
@@ -18,13 +19,13 @@ public class CatalogController {
 	
 	
 
-	@RequestMapping("/catalog/product/{category}")
-	public List<Product> getInventoryProductByCategory(@PathVariable String category){	
+	@RequestMapping("/catalog/category/{category}")
+	public ProductList getInventoryProductByCategory(@PathVariable String category){	
 		return catalogService.getInventoryProductByCategory(category);		
 	}
 	
 	@RequestMapping("/catalog/product/{productId}")
-	public List<Product> getInventoryProductById(@PathVariable String productId){	
+	public Product getInventoryProductById(@PathVariable String productId){	
 		return catalogService.getInventoryProductById(productId);		
 	}
 	
