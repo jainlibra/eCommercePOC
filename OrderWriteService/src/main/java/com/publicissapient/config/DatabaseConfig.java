@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -45,6 +46,10 @@ public class DatabaseConfig {
                 .select()                 .apis(RequestHandlerSelectors.basePackage("com.publicissapient.controller"))
                 .paths(regex("/order.*"))
                 .build();
+    }
+    @Bean
+    public RestTemplate getRestTemplate() {
+       return new RestTemplate();
     }
 }
 

@@ -11,10 +11,12 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Autowired
     private OrderConfig orderConfig;
-	
+    
+  
 	@Override
 	public String saveOrder(JsonDocument orderInfo) {
-		orderConfig.getBucket().upsert(orderInfo);
+	orderConfig.getBucket().upsert(orderInfo);
+	//orderRepository.getCouchbaseOperations().update(objectToUpdate);
 		return "record inserted";
 	}
 

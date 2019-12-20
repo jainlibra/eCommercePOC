@@ -1,12 +1,19 @@
 package com.publicissapient.DAO.pojo;
 
+import org.springframework.data.couchbase.core.mapping.Document;
+
+import com.couchbase.client.java.repository.annotation.Field;
+import com.couchbase.client.java.repository.annotation.Id;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
-
+@Document
 public class Order {
+	@Id
+	@Field
 	
-	private int orderId;
+	private long orderId;
 	@NonNull
 	private String itemId;
 	@NonNull
@@ -17,11 +24,14 @@ public class Order {
 	private String quantity;
 	@NonNull
 	private String userId;
+	@NonNull
+	private String cardNo;
+	
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
-	public Order(int orderId,String itemId,String skuId,String status,String quantity,String userId) {
+	public Order(long orderId,String itemId,String skuId,String status,String quantity,String userId) {
 	this.orderId=orderId;
 	this.itemId=itemId;
 	this.skuId=skuId;
@@ -31,10 +41,10 @@ public class Order {
 	}
 	
 
-	public int getOrderId() {
+	public long getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
 	public String getItemId() {
@@ -66,6 +76,12 @@ public class Order {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getCardNo() {
+		return cardNo;
+	}
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
 	}
 
 }
