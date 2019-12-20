@@ -21,7 +21,7 @@ public class OrderController {
        private OrderService orderService;
        
        @GetMapping(path="/order/bucket/{orderId}")
-       public String getOrderById(@PathVariable Integer orderId) throws ResourceNotFoundException {
+       public String getOrderById(@PathVariable long orderId) throws ResourceNotFoundException {
               return orderService.getOrderByOrderId(orderId);
        }
        

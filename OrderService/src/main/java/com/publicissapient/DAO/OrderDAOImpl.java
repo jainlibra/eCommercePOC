@@ -18,8 +18,8 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Autowired
     private OrderConfig orderConfig;
-	public String getOrderByOrderId(Integer orderId) throws ResourceNotFoundException {
-		simpleTextQuery(orderConfig.getBucket());
+	public String getOrderByOrderId(long orderId) throws ResourceNotFoundException {
+		//simpleTextQuery(orderConfig.getBucket());
 		 JsonDocument jsonDocument = orderConfig.getBucket().get("order::"+orderId);
 		if(jsonDocument==null) {
 			throw new ResourceNotFoundException("resouce not found");

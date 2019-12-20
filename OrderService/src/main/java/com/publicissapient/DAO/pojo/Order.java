@@ -2,7 +2,7 @@ package com.publicissapient.DAO.pojo;
 
 public class Order {
 	
-	private int orderId;
+	private long orderId;
 	private String itemId;
 	private String  skuId;
 	private String status;
@@ -11,7 +11,7 @@ public class Order {
 	
 	public Order() {
 	}
-	public Order(int orderId,String itemId,String skuId,String status,String quantity,String userId) {
+	public Order(long orderId,String itemId,String skuId,String status,String quantity,String userId) {
 	this.orderId=orderId;
 	this.itemId=itemId;
 	this.skuId=skuId;
@@ -21,7 +21,7 @@ public class Order {
 	}
 	
 
-	public int getOrderId() {
+	public long getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderId) {

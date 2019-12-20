@@ -11,7 +11,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderDAO orderDAO;
-	public String getOrderByOrderId(Integer orderId) throws ResourceNotFoundException {
+	public String getOrderByOrderId(long orderId) throws ResourceNotFoundException {
 		
 		return orderDAO.getOrderByOrderId(orderId);
 	}

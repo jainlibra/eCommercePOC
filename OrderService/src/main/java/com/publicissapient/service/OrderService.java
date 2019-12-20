@@ -4,7 +4,7 @@ import com.publicissapient.handler.ResourceNotFoundException;
 
 public interface OrderService {
 
-	public String getOrderByOrderId(Integer orderId) throws ResourceNotFoundException;
+	public String getOrderByOrderId(long orderId) throws ResourceNotFoundException;
 
 
 }
