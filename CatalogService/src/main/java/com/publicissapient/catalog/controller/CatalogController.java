@@ -29,6 +29,9 @@ public class CatalogController {
 		return catalogService.getInventoryProductById(productId);		
 	}
 	
-	
+	@RequestMapping("/catalog/product/")
+	public ProductList getInventoryProduct(){	
+		return catalogService.getInventoryProduct();		
+	}
 
 }

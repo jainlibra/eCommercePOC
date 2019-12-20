@@ -27,6 +27,10 @@ public class CatalogService {
 		
 	}
 	
-	
+	public ProductList getInventoryProduct(){
+		ProductList products= restTemplate.getForObject("http://inventory-service/inventory",ProductList.class);
+		return products;
+		
+	}
 
 }
