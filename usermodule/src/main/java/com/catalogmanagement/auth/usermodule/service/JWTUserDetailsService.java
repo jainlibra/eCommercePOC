@@ -22,7 +22,12 @@ public class JWTUserDetailsService implements UserDetailsService {
         if (null!=users && null!=users.getName()) {
             return new User(users.getName(), "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
                     new ArrayList<>());
-        } else {
+        }
+        else if(username.equals("guest")){
+            return new User(username, "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
+                    new ArrayList<>());
+        }
+        else {
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
     }

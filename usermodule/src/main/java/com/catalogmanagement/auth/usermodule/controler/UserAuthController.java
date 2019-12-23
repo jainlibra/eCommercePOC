@@ -20,6 +20,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @CrossOrigin
 public class UserAuthController {
@@ -52,11 +54,18 @@ public class UserAuthController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody UserTokenRequest authenticationRequest) throws Exception {
 
        // authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        String token=null;
+        if(authenticationRequest.getUsername().equals("guest")){
+            UserDetails guetUserDetails =new org.springframework.security.core.userdetails.User(authenticationRequest.getUsername(), "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
+                    new ArrayList<>());
+            token = jwtTokenUtil.generateToken(guetUserDetails);
+        }
+        else {
+            final UserDetails userDetails = userDetailsService
+                    .loadUserByUsername(authenticationRequest.getUsername());
 
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(authenticationRequest.getUsername());
-
-        final String token = jwtTokenUtil.generateToken(userDetails);
+            token = jwtTokenUtil.generateToken(userDetails);
+        }
 
         return ResponseEntity.ok(new UserTokenResponse(token));
     }
