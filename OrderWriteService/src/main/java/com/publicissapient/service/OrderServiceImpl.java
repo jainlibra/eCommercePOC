@@ -38,9 +38,10 @@ public class OrderServiceImpl implements OrderService {
 		String response = "Some issue in creating order. Please try again later";
 		String responsefromPayment=null;
 		try {
-			response = "order created with orderId";
+			
 			boolean checkInventroy = checkInventroy(orderInfo);
 			if(checkInventroy) {
+				response = "order created with orderId";
 			PaymentDetail paymentDetail=new PaymentDetail();
 			paymentDetail.setUserId(orderInfo.getUserId());
 			paymentDetail.setCardNo(orderInfo.getCardNo());
