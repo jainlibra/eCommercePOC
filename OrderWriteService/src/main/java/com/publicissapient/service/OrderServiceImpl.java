@@ -35,10 +35,10 @@ public class OrderServiceImpl implements OrderService {
 
 		JsonObject orderJson = null;
 		JsonDocument customerDoc = null;
-		String response = "order created with orderId";
+		String response = "Some issue in creating order. Please try again later";
 		String responsefromPayment=null;
 		try {
-			
+			response = "order created with orderId";
 			boolean checkInventroy = checkInventroy(orderInfo);
 			if(checkInventroy) {
 			PaymentDetail paymentDetail=new PaymentDetail();
@@ -58,12 +58,13 @@ public class OrderServiceImpl implements OrderService {
 				customerDoc = JsonDocument.create("order" + "::" + orderJson.get("orderId"), orderJson);
 				response = orderDAO.saveOrder(customerDoc);
 			}
+			return response+orderInfo.getOrderId();
 			}
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		
-		return response+orderInfo.getOrderId();
+		return response;
 	}
 
 	private boolean checkInventroy(Order orderInfo) {
