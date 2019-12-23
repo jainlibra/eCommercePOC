@@ -17,18 +17,39 @@ public class CatalogService {
 	
 	public ProductList getInventoryProductByCategory(String category){
 		ProductList products= restTemplate.getForObject("http://inventory-service/inventory/category/"+category,ProductList.class);
+		for(Product product:products.getProducts()) {
+			if(product.getQuantity()==0) {	
+				product.setStatus(product.getProductName() +" is out of stock");		
+			}else {
+				product.setStatus(product.getProductName() +" is availble");
+			}
+		}
 		return products;
 		
 	}
 	
 	public Product getInventoryProductById(String productId){
+		
 		Product product= restTemplate.getForObject("http://inventory-service/inventory/"+productId, Product.class);
+		if(product.getQuantity()==0) {			
+			product.setStatus(product.getProductName() +" is out of stock");
+		}else {
+			product.setStatus(product.getProductName() +" is availble");
+		}
+		
 		return product;
 		
 	}
 	
 	public ProductList getInventoryProduct(){
 		ProductList products= restTemplate.getForObject("http://inventory-service/inventory",ProductList.class);
+		for(Product product:products.getProducts()) {
+			if(product.getQuantity()==0) {
+				product.setStatus(product.getProductName() +" is out of stock");	
+			}else {
+				product.setStatus(product.getProductName() +" is availble");
+			}
+		}
 		return products;
 		
 	}
