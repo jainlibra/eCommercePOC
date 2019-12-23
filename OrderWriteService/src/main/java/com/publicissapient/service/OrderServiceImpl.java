@@ -18,6 +18,7 @@ import com.publicissapient.DAO.OrderDAO;
 import com.publicissapient.DAO.pojo.Order;
 import com.publicissapient.DAO.pojo.PaymentDetail;
 import com.publicissapient.DAO.pojo.Product;
+import com.publicissapient.handler.ResourceNotFoundException;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -55,11 +56,10 @@ public class OrderServiceImpl implements OrderService {
 				customerDoc = JsonDocument.create("order" + "::" + orderJson.get("orderId"), orderJson);
 				response = orderDAO.saveOrder(customerDoc);
 			}else {
-				orderJson = JsonObject.fromJson(objectMapper.writeValueAsString(orderInfo));
-				customerDoc = JsonDocument.create("order" + "::" + orderJson.get("orderId"), orderJson);
-				response = orderDAO.saveOrder(customerDoc);
+				
+				updateInventroy(orderInfo);
 			}
-			return response+orderInfo.getOrderId();
+			return response+" "+orderInfo.getOrderId();
 			}
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -85,9 +85,43 @@ public class OrderServiceImpl implements OrderService {
 		
 		return new Date().getTime();
 	}
+	private void updateInventroy(Order orderInfo) {
+		
+		Product product = restTemplate.getForObject("http://inventory-service/inventory/"+orderInfo.getItemId(), Product.class);
+		
+			product.setQuantity(product.getQuantity()+Long.parseLong(orderInfo.getQuantity()));
+			 restTemplate.put("http://inventory-service/inventory/", product);
+			
+		
+		
+		
+	}
 
 	public String errorHandler(Order orderInfo) {
 
 		return "Service is down . Please try again later.";
+	}
+
+	public String deleteOrder(Order order) {
+		updateInventroy(order);
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonObject orderJson = null;
+		JsonDocument customerDoc = null;
+		String response = "Order has been deleted";
+		try {
+			orderJson = JsonObject.fromJson(objectMapper.writeValueAsString(order));
+			customerDoc = JsonDocument.create("order" + "::" + orderJson.get("orderId"), orderJson);
+			response = orderDAO.deleteOrder(customerDoc);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return response;
+		
+		
+	}
+
+	@Override
+	public String getOrderByOrderId(long orderId) throws ResourceNotFoundException {
+		return orderDAO.getOrderByOrderId(orderId);
 	}
 }
