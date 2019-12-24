@@ -27,7 +27,7 @@ public class CartServiceImpl implements CartService{
 
 		JsonObject orderJson = null;
 		JsonDocument customerDoc = null;
-		String response = "Some issue in creating order. Please try again later";
+		String response = "Could not add item to Cart. Please try again later";
 		try {
 			
 			boolean checkInventroy = checkInventroy(orderInfo);
