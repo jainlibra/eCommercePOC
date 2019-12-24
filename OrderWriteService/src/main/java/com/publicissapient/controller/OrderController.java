@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.couchbase.client.deps.com.fasterxml.jackson.core.JsonProcessingException;
 import com.couchbase.client.deps.com.fasterxml.jackson.databind.ObjectMapper;
+import com.publicissapient.DAO.pojo.CartItem;
 import com.publicissapient.DAO.pojo.Order;
 import com.publicissapient.handler.ResourceNotFoundException;
+import com.publicissapient.service.CartService;
 import com.publicissapient.service.OrderService;
 
 @RestController
@@ -18,6 +20,8 @@ public class OrderController {
        
        @Autowired
        private OrderService orderService;
+       @Autowired
+       private CartService cartService;
 	
        
        @PostMapping(path="/order/add")
@@ -44,6 +48,24 @@ public class OrderController {
 		}
           return orderService.deleteOrder(order);
 		 
+       }
+       
+       @PostMapping(path="/cart/add")
+       public String addToCart(@RequestBody String productjson) {
+    	   ObjectMapper mapper = new ObjectMapper();
+    	   CartItem order=null;
+    	try {
+			 order = mapper.readValue(productjson, CartItem.class);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+          return cartService.saveCart(order);
+		 
+       }
+       
+       @DeleteMapping(path="/cart/{cartItemID}")
+       public String deleteCartItem(@RequestBody long cartItemId) {    	   
+    	   return cartService.deleteCart("cart::"+cartItemId);
        }
 
 }

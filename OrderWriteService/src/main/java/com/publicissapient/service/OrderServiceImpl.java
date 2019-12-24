@@ -108,6 +108,7 @@ public class OrderServiceImpl implements OrderService {
 		JsonObject orderJson = null;
 		JsonDocument customerDoc = null;
 		String response = "Order has been deleted";
+		//the logic to not allow order to be deleted once payment done should be in UI
 		try {
 			orderJson = JsonObject.fromJson(objectMapper.writeValueAsString(order));
 			customerDoc = JsonDocument.create("order" + "::" + orderJson.get("orderId"), orderJson);
