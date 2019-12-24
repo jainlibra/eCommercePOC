@@ -3,6 +3,7 @@ package com.publicissapient.service;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.couchbase.client.deps.com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,7 +14,7 @@ import com.publicissapient.DAO.CartDAO;
 import com.publicissapient.DAO.pojo.CartItem;
 import com.publicissapient.DAO.pojo.Product;
 import com.publicissapient.handler.ResourceNotFoundException;
-
+@Service
 public class CartServiceImpl implements CartService{
 	
 	@Autowired
