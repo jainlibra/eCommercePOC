@@ -1,5 +1,8 @@
 package com.publicissapient.controller;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +28,13 @@ public class OrderController {
 	
        
        @PostMapping(path="/order/add")
-       public String addOrder(@RequestBody String productjson) {
+       public String addOrder(@RequestBody Order order) {
     	   ObjectMapper mapper = new ObjectMapper();
-    	   Order order=null;
-    	try {
-			 order = mapper.readValue(productjson, Order.class);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+    	  // Order order=null;
+		/*
+		 * try { // order = mapper.readValue(productjson, Order.class); } catch
+		 * (JsonProcessingException e) { e.printStackTrace(); }
+		 */
           return orderService.saveOrder(order);
 		 
        }
@@ -51,15 +53,20 @@ public class OrderController {
        }
        
        @PostMapping(path="/cart/add")
-       public String addToCart(@RequestBody String productjson) {
-    	   ObjectMapper mapper = new ObjectMapper();
-    	   CartItem order=null;
+       public String addToCart(@RequestBody Collection<CartItem> productjson) {
+    	  
+    	 
+    	   String response =null;
     	try {
-			 order = mapper.readValue(productjson, CartItem.class);
-		} catch (JsonProcessingException e) {
+    		for (CartItem order : productjson) {
+    		
+    			response=cartService.saveCart(order);
+			}
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-          return cartService.saveCart(order);
+          return response;
 		 
        }
        

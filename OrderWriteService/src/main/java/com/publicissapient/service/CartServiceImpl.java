@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService{
 		String response = "Could not add item to Cart. Please try again later";
 		try {
 			
-			boolean checkInventroy = checkInventroy(orderInfo);
+			boolean checkInventroy = true;
 			if(checkInventroy) {
 				response = "item added to cart successfully";
 						
