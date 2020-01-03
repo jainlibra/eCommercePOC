@@ -39,14 +39,16 @@ public class OrderWriteServiceApplicationTests {
 
 		
 		//Order order=Order.builder().orderId(1).itemId("123").skuId("12345").status("confirmed").quantity("4").userId("3").build();
-		Order order = new Order(10, "122", "1235", "draft", "4", "1");
-		String writeValueAsString = obj.writeValueAsString(order);
-
-		MockHttpServletResponse response = mvc
-				.perform(post("/order/add").contentType(MediaType.APPLICATION_JSON).content(writeValueAsString))
-				.andReturn().getResponse();
-
-		assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+		/*
+		 * //Order order = new Order(10, "122", "1235", "draft", "4", "1"); String
+		 * writeValueAsString = obj.writeValueAsString(order);
+		 * 
+		 * MockHttpServletResponse response = mvc
+		 * .perform(post("/order/add").contentType(MediaType.APPLICATION_JSON).content(
+		 * writeValueAsString)) .andReturn().getResponse();
+		 * 
+		 * assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
+		 */
 
 	}
 

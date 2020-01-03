@@ -1,10 +1,7 @@
-package com.publicissapient.inventoryservice.dto;
+package com.publicissapient.DAO.pojo;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Version;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="products")
 public class Product {
 	
 	@Id
@@ -14,7 +11,6 @@ public class Product {
 	String category;
 	String price;
 	long quantity;
-	@Version Long version;
 	
 	public Product() {
 		
