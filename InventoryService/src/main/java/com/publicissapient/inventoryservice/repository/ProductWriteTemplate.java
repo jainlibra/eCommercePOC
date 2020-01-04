@@ -21,7 +21,7 @@ public class ProductWriteTemplate {
 	private MongoTemplate mongoTemplate;
 	
 	public boolean updateProductWithLocking(String productId,int quantity) {
-		Product product = mongoTemplate.find(query(where("id").is(productId)), Product.class).get(0);
+		Product product = mongoTemplate.find(query(where("_id").is(productId)), Product.class).get(0);
 		long prodQtyTable = product.getQuantity();
 		if(prodQtyTable >= (long)quantity) {
 			product.setQuantity(prodQtyTable-(long)quantity);
@@ -36,7 +36,7 @@ public class ProductWriteTemplate {
 	
 	public boolean updateProductWithOverbooking(String productId,int quantity) {
 		Update update = new Update().inc("quantity", -quantity);
-		Query query = new Query(Criteria.where("id").is(productId).and("quantity").gte(-10+quantity));
+		Query query = new Query(Criteria.where("_id").is(productId).and("quantity").gte(-10+quantity));
 		try {
 			UpdateResult result = mongoTemplate.updateFirst(query,update,Product.class);
 			if(null != result && result.getModifiedCount() == 1)

@@ -1,6 +1,7 @@
 package com.publicissapient.inventoryservice.service;
 
 import com.publicissapient.inventoryservice.dto.Product;
+import com.publicissapient.inventoryservice.dto.ProductRequest;
 
 public interface IProductWriteService {
 	
@@ -9,5 +10,7 @@ public interface IProductWriteService {
 	public void updateProduct(Product product);	
 	
 	public void deleteProduct(Product product);
+	
+	public boolean updateProductInventory(ProductRequest productRequest);
 
 }

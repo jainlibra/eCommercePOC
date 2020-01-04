@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.publicissapient.inventoryservice.dto.Product;
 import com.publicissapient.inventoryservice.dto.ProductList;
+import com.publicissapient.inventoryservice.dto.ProductRequest;
 import com.publicissapient.inventoryservice.service.IProductReadService;
 import com.publicissapient.inventoryservice.service.IProductWriteService;
 
@@ -61,6 +62,18 @@ public class InventoryServiceAPI {
 	public ResponseEntity<Object> deleteProduct(@RequestBody Product product){
 		productWriteService.deleteProduct(product);
 		return new ResponseEntity<>(product,HttpStatus.ACCEPTED);
-	}	
+	}
+	
+	@PutMapping("/inventoryupdate")
+	public ResponseEntity<Object> updateProductInventory(@RequestBody ProductRequest productRequest){
+		boolean status = productWriteService.updateProductInventory(productRequest);
+		if(!status) {
+			return new ResponseEntity<>(productRequest,HttpStatus.NOT_ACCEPTABLE);
+		}
+		return new ResponseEntity<>(productRequest,HttpStatus.ACCEPTED);
+		
+	}
+	
+	
 	
 }
